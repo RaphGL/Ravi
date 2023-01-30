@@ -1,3 +1,7 @@
+# Fonts
+*.ttf
+*otf
+
 # Prerequisites
 *.d
 

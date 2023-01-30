@@ -1,5 +1,5 @@
-#ifndef WINDOW_RENDERER_H
-#define WINDOW_RENDERER_H
+#ifndef WINDOW_RENDERER_HPP
+#define WINDOW_RENDERER_HPP
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>

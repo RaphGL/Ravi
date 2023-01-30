@@ -1,3 +1,6 @@
+#ifndef CURSOR_HPP
+#define CURSOR_HPP
+
 #include <SDL2/SDL.h>
 #include "../window_renderer.hpp"
 
@@ -17,3 +20,5 @@ public:
     void move_up();
     void move_down();
 };
+
+#endif
