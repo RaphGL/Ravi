@@ -3,14 +3,16 @@
 
 #include <SDL2/SDL.h>
 #include "../window_renderer.hpp"
+#include <tuple>
 
 class Cursor
 {
     SDL_Rect cursor;
-    WindowRenderer &wrenderer;
+    const WindowRenderer &wrenderer;
 
 public:
     Cursor(WindowRenderer &wrenderer);
+    std::tuple<int, int> get_coordinates();
 
     void draw();
 

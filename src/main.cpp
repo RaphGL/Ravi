@@ -6,12 +6,17 @@ int main()
 {
     WindowRenderer wrenderer{};
     StatusBar statusbar{wrenderer};
+    statusbar.set_opened_file("main.cpp");
+    statusbar.set_mode("NORMAL");
     Cursor cursor{wrenderer};
 
     SDL_Event e;
     for (;;)
     {
         wrenderer.clear();
+        auto [cursor_x, cursor_y] = cursor.get_coordinates();
+        statusbar.set_linenum(cursor_x, cursor_y);
+
         statusbar.draw();
         cursor.draw();
         while (SDL_PollEvent(&e))

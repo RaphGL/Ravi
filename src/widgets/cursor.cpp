@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include "../window_renderer.hpp"
 #include "cursor.hpp"
+#include <tuple>
 
 Cursor::Cursor(WindowRenderer &wrenderer) : wrenderer{wrenderer}
 {
@@ -8,6 +9,11 @@ Cursor::Cursor(WindowRenderer &wrenderer) : wrenderer{wrenderer}
     cursor.w = wrenderer.char_width;
     cursor.x = 0;
     cursor.y = 0;
+}
+
+std::tuple<int, int> Cursor::get_coordinates()
+{
+    return std::make_tuple(cursor.x / cursor.w, cursor.y / cursor.h);
 }
 
 void Cursor::draw()
@@ -19,8 +25,8 @@ void Cursor::draw()
 // TODO make it change with offset cursor.w and cursor.h
 void Cursor::move_to(int x, int y)
 {
-    cursor.x = x;
-    cursor.y = y;
+    cursor.x = x * cursor.w;
+    cursor.y = y * cursor.h;
 }
 
 void Cursor::move_left()
@@ -31,7 +37,7 @@ void Cursor::move_left()
 
 void Cursor::move_right()
 {
-    if (cursor.x < wrenderer.width - cursor.w)
+    if (cursor.x < wrenderer.width - cursor.w * 2)
         cursor.x += cursor.w;
 }
 
