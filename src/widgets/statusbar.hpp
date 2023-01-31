@@ -22,6 +22,7 @@ public:
     void set_linenum(int row, int col);
     void set_opened_file(std::string filename);
     void set_mode(std::string mode);
+    int get_position();
 };
 
 #endif

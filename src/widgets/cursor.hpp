@@ -7,11 +7,14 @@
 
 class Cursor
 {
+    int x;
+    int y;
     SDL_Rect cursor;
     const WindowRenderer &wrenderer;
 
 public:
-    Cursor(WindowRenderer &wrenderer);
+    int lower_limit;
+    Cursor(WindowRenderer &wrenderer, int lower_limit);
     std::tuple<int, int> get_coordinates();
 
     void draw();

@@ -4,7 +4,8 @@
 #include "../window_renderer.hpp"
 #include <iostream>
 
-StatusBar::StatusBar(WindowRenderer &wrenderer) : wrenderer{wrenderer} {}
+StatusBar::StatusBar(WindowRenderer &wrenderer) : wrenderer{wrenderer} {
+}
 
 
 void StatusBar::draw()
@@ -70,4 +71,8 @@ void StatusBar::set_opened_file(std::string filename)
 
 void StatusBar::set_mode(std::string mode) {
     curr_mode = mode;
+}
+
+int StatusBar::get_position() {
+    return statusbar.y;
 }

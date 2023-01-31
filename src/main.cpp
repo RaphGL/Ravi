@@ -8,14 +8,14 @@ int main()
     StatusBar statusbar{wrenderer};
     statusbar.set_opened_file("main.cpp");
     statusbar.set_mode("NORMAL");
-    Cursor cursor{wrenderer};
+    Cursor cursor{wrenderer, statusbar.get_position()};
 
     SDL_Event e;
     for (;;)
     {
-        wrenderer.clear();
         auto [cursor_x, cursor_y] = cursor.get_coordinates();
         statusbar.set_linenum(cursor_x, cursor_y);
+        cursor.lower_limit = statusbar.get_position();
 
         statusbar.draw();
         cursor.draw();
@@ -46,6 +46,7 @@ int main()
             }
         }
         wrenderer.present();
+        wrenderer.clear();
     }
     return 0;
 }
